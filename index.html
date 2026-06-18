@@ -10,14 +10,47 @@
 
 body{
 background:linear-gradient(to bottom,#0f172a,#1e293b,#334155);
-font-family:Georgia, serif;
+font-family:Georgia,serif;
 color:white;
 text-align:center;
 margin:0;
 padding:0;
+overflow-x:hidden;
 }
 
+/* SOBRE */
+
+#sobre{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(to bottom,#0f172a,#1e293b,#334155);
+z-index:1000;
+cursor:pointer;
+}
+
+.carta{
+background:white;
+padding:35px;
+border-radius:30px;
+max-width:330px;
+box-shadow:0 0 40px rgba(255,215,0,.5);
+color:#333;
+}
+
+.carta h2{
+color:#b8860b;
+}
+
+/* CONTENIDO */
+
 .contenido{
+display:none;
 padding:25px;
 }
 
@@ -26,33 +59,114 @@ color:#FFD700;
 font-size:45px;
 }
 
+.tarjeta{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+border-radius:30px;
+padding:30px;
+margin:40px auto;
+width:90%;
+max-width:550px;
+box-shadow:0 0 20px rgba(255,215,0,.15);
+animation:aparecer 2s;
+}
+
 .frase{
 font-size:22px;
 line-height:1.8;
-margin:30px;
+margin-top:25px;
 }
 
 img{
-width:90%;
-max-width:500px;
-border-radius:25px;
-box-shadow:0 0 25px rgba(255,215,0,.4);
-margin-top:25px;
+width:88%;
+max-width:420px;
+border-radius:30px;
+border:3px solid rgba(255,215,0,.7);
+box-shadow:
+0 0 15px rgba(255,215,0,.3),
+0 10px 30px rgba(0,0,0,.4);
+transition:.6s;
+}
+
+img:hover{
+transform:scale(1.03);
 }
 
 .final{
 font-size:28px;
 color:#FFD700;
-margin-top:50px;
+margin-top:60px;
+margin-bottom:60px;
+}
+
+.particula{
+position:fixed;
+font-size:18px;
+color:#FFD700;
+animation:flotar 10s linear infinite;
+opacity:.7;
+pointer-events:none;
+}
+
+@keyframes flotar{
+
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+
+20%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-100px);
+opacity:0;
+}
+
+}
+
+@keyframes aparecer{
+
+from{
+opacity:0;
+transform:translateY(50px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="contenido">
+<div id="sobre">
+
+<div class="carta">
+
+<div style="font-size:80px;">💌</div>
+
+<h2>Una pequeña sorpresa para ti ❤️</h2>
+
+<p>Toca el sobre para abrirlo</p>
+
+</div>
+
+</div>
+
+<div class="particula" style="left:5%;animation-delay:0s;">✨</div>
+<div class="particula" style="left:20%;animation-delay:2s;">✦</div>
+<div class="particula" style="left:40%;animation-delay:4s;">✨</div>
+<div class="particula" style="left:60%;animation-delay:1s;">✦</div>
+<div class="particula" style="left:80%;animation-delay:3s;">✨</div>
+<div class="particula" style="left:95%;animation-delay:5s;">✦</div>
+
+<div class="contenido" id="contenido">
 
 <h1>❤️ Feliz Día del Padre ❤️</h1>
 
@@ -60,11 +174,17 @@ margin-top:50px;
 Para el hombre que cambió nuestras vidas para siempre.
 </div>
 
+<div class="tarjeta">
+
 <img src="IMG-20260501-WA0011.jpg">
 
 <div class="frase">
 Gracias por cada abrazo, por cada sonrisa y por todo el amor que entregas cada día.
 </div>
+
+</div>
+
+<div class="tarjeta">
 
 <img src="IMG-20260501-WA0059.jpg">
 
@@ -72,23 +192,55 @@ Gracias por cada abrazo, por cada sonrisa y por todo el amor que entregas cada d
 Verte convertirte en papá ha sido uno de los regalos más hermosos que nos ha dado la vida.
 </div>
 
+</div>
+
+<div class="tarjeta">
+
 <img src="IMG-20260503-WA0002.jpg">
 
 <div class="frase">
 Nuestro pequeño aún no puede decirlo con palabras, pero en cada mirada se refleja cuánto te ama.
 </div>
 
+</div>
+
+<div class="tarjeta">
+
 <img src="IMG-20260524-WA0100.jpg">
 
-<div class="final">
-Gracias por ser un papá maravilloso ❤️
-<br><br>
-Con amor,
-<br>
-Noah
+<div class="frase">
+Cada recuerdo a tu lado es un tesoro que guardaremos por siempre. ❤️
 </div>
 
 </div>
+
+<div class="final">
+
+Gracias por ser un papá maravilloso ❤️
+
+<br><br>
+
+Con amor,
+
+<br>
+
+Noah ❤️
+
+</div>
+
+</div>
+
+<script>
+
+document.getElementById("sobre").onclick=function(){
+
+document.getElementById("sobre").style.display="none";
+
+document.getElementById("contenido").style.display="block";
+
+}
+
+</script>
 
 </body>
 </html>
